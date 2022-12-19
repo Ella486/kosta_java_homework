@@ -1,0 +1,56 @@
+- interface(리뷰)
+
+interface Test{
+  public static final 상수이다.
+  public abstract 메소드이다
+  public void aa();
+
+  java 1.8 version 추가된 문법
+   body 있는 메소드 존재 - static, default
+
+}
+
+interface Test2{
+   메소드 2개
+}
+
+class A implements Test, Test2 {//구현한다.  A는 구현객체이다. A is a Test 성립, 다중 상속가능
+	//Test 안에 모든 abstract 메소드를 재정의 한다.
+	public void aa(){ 
+	System.out.println("안녕");
+	}
+}
+
+class B implements Test {
+	
+	public void aa(){ 
+	System.out.println("졸립다");
+	}
+}
+
+
+  A a = new A(); // 이렇게 하는거 권장하지 않음
+  a.aa(); // 안녕
+
+ Test t = new A(); //이렇게 하는 걸 권장함 //유지보수가 유리함 // 수정시 new A();만 수정하면 됨
+ t.aa(); //안녕 or 졸립다.
+
+1) abstract class 
+   - 상속, 단일 상속으로 abstract 클래스 여러개 상속 안됨!
+vs 
+2) interface
+   - 구현
+   - 여러개의 interface를 구현할 수 있다.
+----------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+

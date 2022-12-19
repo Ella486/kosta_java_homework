@@ -1,0 +1,2 @@
+Map의 구조인 Properties 구현 객체는 String 형태의 key와 value만 저장 가능한다.
+ : 주로 ~.properties 파일을 

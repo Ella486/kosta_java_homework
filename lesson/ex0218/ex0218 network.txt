@@ -1,0 +1,24 @@
+- Network
+: import java.net.*;
+
+: 용어
+  ip
+  port
+  Domain
+  URL / URI
+	https://www.naver.com/
+	ex) 통신규약://ip:port/파일이름
+
+: 네트워크방법
+1) UDP방법: 비연결성 통신방법 ex) 우체국
+   - 일정양의 패킷(데이터)을 모아두었다가 한번에 전송하는 형태
+   - 네트워크부담은 낮은게 장점이라면 신뢰성은 떨어지는 단점이 있다.
+   DatagramPacket, DatagramSocket
+
+
+
+2) TCP방법: 연결성 통신방법 ex) 이메일
+  - 데이터를 보내는 동시에 바로 전송된다.
+  - 신뢰성이 높고 네트워크부담도 크다.
+  - ServerSocket, Soket
+

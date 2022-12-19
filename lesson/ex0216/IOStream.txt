@@ -1,0 +1,148 @@
+-IOStream
+ : import java.io.*;
+ : 단방향 Stream //입력과 출력을 동시에 못함(양방향 X)
+ : 예외처리 필수
+
+ : byte 단위로 읽기/쓰기
+    읽기 - InputStream <-----미리 상속받은 서브 클래스 제공 
+    쓰기 - OutputStream  <-----미리 상속받은 서브 클래스 제공
+ 
+ : 문자단위로 읽기/쓰기
+    읽기 - Reader  <-----미리 상속받은 서브 클래스 제공
+    쓰기 - Writer   <-----미리 상속받은 서브 클래스 제공
+
+//// 읽기, 쓰기 클래스들(InputStream, OutputStream, Reader, Writer)은 abstract  class이다.
+//// abstract 클래스들은 상속만 되고 생성만 안되므로...  subclass 들 사용함.
+
+
+ : 용어 정리
+   - 노드 Stream
+	: 바로 읽기,쓰기가 가능한 객체
+
+   - 필터 Stream = 보조 Stream
+	: 노드 Stream을 필터Stream에 전달해서 가공을 하고
+	  그결과를 가지고 읽기, 쓰기 (ex - 입출력속도 향상을 위한 Buffered, 데이터의 타입을 가공할 때.....)
+
+ : File 객체 <---- 파일을 찾아서 읽거나 저장하거나 삭제할 때 필요한 객체
+
+==========================================================================
+- byte 단위 파일읽기
+InputStream <-------- FilesInputStream (상속, 생성 가능)
+    - 순서
+try{
+      1) 생성
+
+      2) 읽기
+        int i = ~.read();
+ 
+}catch(IOException e){
+
+}finally{
+      3) 닫기 - 사용된 객체 제거
+}
+
+-byte단위로 파일저장 = 쓰기
+OutputStream <-------- FilesOutputStream
+    1) 생성
+    2) 저장
+       ~.write();
+    3) 닫기
+
+--------------------------------------------------------------------
+-파일 byte단위로 읽기 ---> 속도향상을 위해 Buffered 이용
+FileInputStream  -----> BufferedInputStream
+	ex) new BufferedInputStream(new FileInputStream("경로"));
+
+-파일 byte단위로 쓰기 ---> 속도향상을 위해 Buffered 이용
+FileOutputStream  -----> BufferedOutputStream
+
+--------------------------------------------------------------------
+-파일문자단위로 읽기  ---> 속도향상을 위해 Buffered 이용
+  FileReader -----> BufferedReader
+
+-파일문자단위로 쓰기  ---> 속도향상을 위해 Buffered 이용
+  FileWriter -----> BufferedWriter
+
+----------------------------------------------------------------
+try(변수선언 = 생성;){
+
+}catch(){
+
+}
+---------------------------------------------------------------------
+- 키보드 입력!! <------> 모니터출력
+  System.in                  System.out
+
+      InputStream is = System.in;
+      int i = is.read();//1byte 읽기
+
+  byte단위로 읽기 ----> 문자단위로 변경!
+   InputStream   -------> InputStreamReader(InputStream is)
+
+  문자단위로 읽기               Buffered이용
+  InputStreamReader   -----> new BufferedReader(new InputStreamReader(System.in));
+
+ex)
+  BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+  String data = br.readLine();
+
+  결론: 키보드 입력을 받기위해서 해야할 절차가 복잡하다보니.....
+         Scanner를 제공해서 키보드 입력을 손쉽게 받을 수 있는 다양한 메소드를 제공해준다.
+
+	Scanner sc = new Scanner(System.in);
+	sc.next();
+	sc.nextLine();
+	sc.nextInt();
+------------------------------------------------------------------
+* 데이터 저장!!
+1) 변수: 한가지타입에 한가지 값만 저장 ! - Object obj;
+2) 배열: 한가지타입에 여러개의 값을 저장 - 단점) 데이터 조작 불편
+3) 자료구조: 다양한 타입에 여러개의 값을 객체 형태로 저장 (데이터조작에 관련된 메소드를 풍부하게 제공)
+
+  결국, 1),2),3) 영속성에 한계가 있다. - 프로그램을 종료하면 모두 초기화!!!
+
+4) 파일에 저장 - 영속성이 영구적!! 단점) 방대한 많은 양의 데이터를 저장해서 관리하는 것 쉽지 않다.
+ex) 장희정, 10, 서울, 이나영, 20, 대구
+
+ex) ~.properties 파일에 저장
+  key = value
+  10 = 장희정, 서울
+  20 = 이나영, 대구
+  30 = 이효리, 제주도
+  .......
+
+  but, 관리하기가 쉽지 않음!!
+
+* 자바의 관점에서.... 정보를 객체의 속성으로 관리!!!
+
+class Student impliment Serializable{
+      no, name, addrS
+}
+
+   *속성을 관리하는 객체를 영구적으로 관리 할 수 있는 파일에 저장할 수 없을까??
+    : 자바에서 이러한 부분을 해결하기 위해서 객체를 저장하고 저장된 객체를 조회할 수 있는 문법제공!!
+       1) 직렬화: 객체를 byte형식으로 변환해서 일렬로 나열하는 형태 - ObjectOutputStream
+       2) 역직렬화 : 저장된 객체를 다시 복원 - ObjectInputStream
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

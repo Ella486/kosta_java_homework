@@ -1,0 +1,166 @@
+ex0207수업메모
+
+다형성
+  1) 매개변수를 이용한 다형성
+  2) 필드를 이용한 다형성
+
+
+고객 5명
+Customer cu [] = new Customer[5];
+
+사원 3명
+Employee emp [] = new Employee[3];
+
+
+고객 + 사원 ==> People 선언
+People [] pe = new People[8];
+pe[0] = new Customer();
+pe[1] = new Customer();
+pe[2] = new Employee();
+
+-------------------------------------------------------
+class Parent{
+  속성
+  메소드
+
+}
+
+Child ch = new Child(); // ch변수라는 부모, 자식부분 모두 접근 가능
+
+parent p = new child(); // 부모타입부분만 접근이 가능
+
+  //접근이 가능하도록 캐스팅이 필요하다.
+  Child ch2 = p; //안된다. (왜? 부모 > 자식)
+
+  Child ch2 = (Child)p; // ObjectDownCasting한다.
+
+Object obj = 자바의 모든 객체를 저장 할 수 있다!!!
+
+
+-----------------------------------------------------------------
+		sp.methodZero();
+		sp.methodOwn();
+		sp.methodTwo(2);
+		sp.methodThree(3, "MethodOverridingExam.java");
+		sp.methodFour();
+		System.out.println("**************************************");
+		
+		sb.methodZero();
+		sb.methodOwn();
+		sb.methodTwo(2222);
+		sb.methodThree(3333, "또 MethodOverridingExam.java");
+		sb.methodFour();
+		System.out.println("**************************************");
+
+----------------------------------------------------------------------------------------
+
+class Parent{
+   parent(){
+   }
+   parent(int i){
+   }
+   parent(String s){
+   }
+
+}
+////////////////////////////////////////////////
+class Child extends Parent{
+   Child(){
+      // super(); 가 생략되어있음
+   }
+   Child(int i){
+     // super(); 가 생략되어있음
+   }
+   Child(boolean b){
+     // super(); 가 생략되어있음
+   }
+
+}
+---------------------------------------------------------------
+
+class Animal{
+   속성 + 메소드 정의;
+   public void sound(){
+        System.out.println("으~~~~엉.....");
+   }
+}
+
+class Cat extends Animal{
+     //재정의
+     public void sound(){
+         System.out.println("야옹");
+     }
+}
+
+class Dog  extends Animal{
+    public void sound(){
+         System.out.println("멍멍");
+     }
+}
+
+class Pig  extends Animal{
+    public void sound(){
+         System.out.println("꿀꿀");
+    }
+}
+---------------------------------------------------------
+   Cat cat = new Cat();
+
+   Animal animal = new Cat(); // 다형성
+
+-----------------------------------------------------------
+Object에 정의되어 있는 
+    toString() 메소드는 주소값을 만들어 문자열로 리턴
+      클래스이름@hashcode
+
+Object를 상속받은 String 객체는 
+    toString()메소드를 오버라이딩했다.
+      : 주소값을 리턴하지 않고 String의 문자열을 리턴해준다.
+
+------------------------------------------------
+1. 장희정최고 출력되도록한다.
+
+2. 객체가 생성될 떄 전달한 문자열이 출력되도록!!
+    숙제는 열심!
+
+3.  문자출력되면서 주소값도 같이 출력되도록
+  숙제는 열심히, 주소값
+
+4. 실습폴더 완성
+
+5. 교재 7장 상속보기
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

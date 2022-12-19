@@ -1,0 +1,72 @@
+- Thread
+ : Thread란 하나의 프로그램 안에서 여러개의 작업을 동시에 일하는 것처럼 만들어주는 것(멀티스레드)
+
+: Thread를 만드는 방법
+  1) 상속
+      class Test extends Thread{
+	//thread로 동작하게된 기능을 작성하기 위한 필수 재정의 메소드
+	@Override
+	public void run(){
+	      //기능
+	}
+
+      }
+
+      - 호출
+ 	Test t = new Test();
+	t.run(); //X
+	t.start(); //스레드 준비 상태!!
+
+
+  2) 구현
+     class Test implemets Runnable{ //Runnable에는 stat 메소드가 없어서 스레드로 만들어주고 start 사용할 수 있음
+	@Override
+	public void run(){
+	      //기능
+	}
+
+    }
+
+     Test t = new Test();
+   Thread th = new Thread(t); 
+   th.start();
+---------------------------------------------------------------------------------------------
+@Functionallnterface
+  : 현재 interface가 한개의 메소드를 가지고 있다는 표현
+  : 이것은 람다식표현을 사용할 수 있다는 뜻 (---> 기능구현)
+
+  : 함수적선언  --> 소스가 간결해진다. 람다식표현(->)
+
+  : 람다식표현식은 interface 안에 있는 메소드가 한개만 존재할 때 구현클래스 없이 간결하게 메소드의 기능을 
+    기능을 정의 할 수 있도록 하는것. 익명구현체 만들어짐
+
+@Functionallnterface
+ interface Runnable{
+       void run();
+}
+
+- 원래코딩
+class A implements Runnable{
+     public void run(){
+	기능;
+     }
+
+}
+
+- 람다식방법 코딩
+Runnable r = () -> {
+      기능
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

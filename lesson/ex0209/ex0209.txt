@@ -1,0 +1,60 @@
+
+interface A{
+  // int a = 100;;
+  // public String name = "희정";
+  // int b =3;
+    void aa();
+    int bb();
+    public abstract void cc();
+
+}
+
+interface B extends A{
+    void dd();
+}
+
+interface C{
+    void test();
+
+}
+--------------------------------------------------
+class Test implements C{ // Test is a C 개념
+
+      public void test(){ //public 생각해야한 부모쪽에  public 생략 되어있어서 재정의 할때 가져와야함
+
+      }
+     public void aa(){}
+     public int bb(){
+       return 1;
+     }
+    public void cc(){
+
+    }
+
+    public void dd(){
+
+    }
+}
+
+C c = new Test(); //OK
+
+A a = new Test();  // 타입이 부모타입이라도  인터페이스여서 메소드들 다 재정의 해야기 때문에 재정의한 메소드로 알아서 감
+B b = new Test();
+
+------------------------------------------------------------------------------------
+
+익명 구현 객체!!
+
+  인터페이스타입 변수 = new 인터페이스이름(){
+	메소드 재정의;
+  }
+
+
+
+
+
+
+
+
+
+

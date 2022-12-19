@@ -1,0 +1,50 @@
+
+  * this 키워드
+	: 생성된 현재 객체 뜻한다.
+	
+	1) this.변수 이름 : 현재 객체 안에 있는 전역변수를 뜻한다.
+	2) this.메소드이름(값,값,.....) : 현재 객체 안에 있는 메소드를 호출
+	3) this(값,값,.....) : 현재 객체 안에 있는 생성자를 호출 (반드시 생성자 구현부 첫번째 줄에서만 가능)
+
+
+//매소드 이름이 같으면 오버로딩이 가능함 (인수만) 다르게 해서 메소드 만들고 오버로딩하기
+ public class Test{
+
+	public Test(){
+
+	}
+
+	protected Test(int i ){
+
+	}
+
+	public Test(String s){
+
+	}
+
+}
+--------------------------------------------------------------------------------------------------------------
+
+  class Goods{
+	public Goods(){ }
+	public Goods(String code, String name){
+		this.code = code;
+		this.name = name;
+
+	}
+  }
+
+
+Goods g = new Goods(); //속성(5개)들은 모두 초기화!!
+Goods g2 = new Goods("A1", "새우깡"); 
+Goods g3 = new Goods("A2", "콘칩"); 
+
+g.setCode("A1);
+.........
+g.setExplain("맛있다.");
+
+
+
+
+
+
